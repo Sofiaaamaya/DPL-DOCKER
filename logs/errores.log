@@ -1,0 +1,5 @@
+[Wed Nov 26 12:26:29.950957 2025] [authz_core:error] [pid 19:tid 19] [client 172.18.0.1:48926] AH01630: client denied by server configuration: /var/www/prueba/descargas/
+[Wed Nov 26 12:30:40.700200 2025] [authz_core:error] [pid 25:tid 25] [client 172.18.0.1:46990] AH01630: client denied by server configuration: /var/www/prueba/descargas/
+[Wed Nov 26 12:36:14.229469 2025] [authz_core:error] [pid 19:tid 19] [client 172.18.0.1:58888] AH01630: client denied by server configuration: /var/www/prueba/descargas/
+[Wed Nov 26 12:39:22.051390 2025] [authz_core:error] [pid 19:tid 19] [client 192.168.216.2:43782] AH01630: client denied by server configuration: /var/www/prueba/descargas/
+[Wed Nov 26 13:19:15.525796 2025] [authz_core:error] [pid 40:tid 40] [client 172.18.0.1:54648] AH01630: client denied by server configuration: /var/www/prueba/descargas/

@@ -1,0 +1,17 @@
+services:
+  apache:
+    image: php:8.2-apache
+    container_name: apache_lab
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www
+      - ./config/sites-available:/etc/apache2/sites-available
+      - ./userdirs:/home
+      - ./logs:/var/log/apache2
+    command: >
+      bash -lc "
+      a2enmod rewrite userdir alias dir &&
+      a2ensite 10-www.sofiamaya.com.conf 20-host1.sofiamaya.com.conf 21-host2.sofiamaya.com.conf &&
+      apache2ctl -D FOREGROUND
+      "
