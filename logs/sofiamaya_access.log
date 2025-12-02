@@ -1,0 +1,3 @@
+172.19.0.1 - - [02/Dec/2025:09:23:23 +0000] "GET / HTTP/1.1" 200 2963 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+172.19.0.1 - - [02/Dec/2025:09:23:23 +0000] "GET /favicon.ico HTTP/1.1" 404 519 "https://www.sofiamaya.com:8443/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+172.19.0.1 - - [02/Dec/2025:09:26:57 +0000] "GET / HTTP/1.1" 200 2963 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"

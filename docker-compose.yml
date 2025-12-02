@@ -1,26 +1,34 @@
 services:
-  apache:
+  apache_lab:
     image: php:8.2-apache
     container_name: apache_lab
     ports:
+      # Puerto HTTP de acceso (Host:8080 -> Contenedor:80)
       - "8080:80"
+      # Puerto HTTPS de acceso (Requerido por 30-sofiamaya-https.conf)
+      - "8443:443"
     volumes:
       # Configuraciones
       - ./config/sites-available:/etc/apache2/sites-available
       - ./config/ports-80.conf:/etc/apache2/ports.conf
       # Certificados SSL
       - ./config/ssl:/etc/apache2/ssl
-      # Contenidos
+
+      # Contenidos (DocumentRoot)
+      - ./www/sofiamaya:/var/www/sofiamaya
+      - ./www/error:/var/www/error
       - ./www/prueba:/var/www/prueba
       - ./www/host1:/var/www/host1
       - ./www/host2:/var/www/host2
+
       # Directorios de usuario
       - ./userdirs:/home
       # Logs
       - ./logs:/var/log/apache2
-    command: >
-      bash -c "
-      a2enmod rewrite userdir alias dir ssl &&
-      a2ensite 00-default.conf 10-www.sofiamaya.com.conf 20-host1.sofiamaya.com.conf 21-host2.sofiamaya.com.conf 30-sofiamaya-https.conf 31-error.conf &&
-      apache2ctl -D FOREGROUND
-      "
+
+    # 🚨 CORRECCIÓN FINAL: Se corrige la sintaxis de bash, eliminando el truncamiento.
+    command: [
+      "bash",
+      "-c",
+      "a2enmod rewrite userdir alias dir ssl && a2ensite 10-www.sofiamaya.com 20-host1.sofiamaya.com 21-host2.sofiamaya.com 30-sofiamaya-https 31-error 31-http-to-https && apache2ctl -D FOREGROUND"
+    ]
