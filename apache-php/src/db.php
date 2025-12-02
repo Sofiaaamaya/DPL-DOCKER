@@ -1,0 +1,10 @@
+<?php
+$host = "mysql";
+$db = "authdb";
+$user = "authuser";
+$pass = "authpass";
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+ die("Conexión fallida: " . $conn->connect_error);
+}
+?>
