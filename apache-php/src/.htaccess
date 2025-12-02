@@ -1,0 +1,10 @@
+Options +Indexes +FollowSymLinks
+AddLanguage es .es
+AddLanguage en .en
+AddLanguage fr .fr
+AddLanguage de .de
+DirectoryIndex index
+# Activar negociación de contenido
+Options +MultiViews
+# Idioma por defecto
+DefaultLanguage en
