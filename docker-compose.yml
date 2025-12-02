@@ -21,6 +21,6 @@ services:
     command: >
       bash -c "
       a2enmod rewrite userdir alias dir ssl &&
-      a2ensite 00-default.conf 10-www.sofiaamaya.com.conf 20-host1.sofiaamaya.com.conf 21-host2.sofiaamaya.com.conf 30-sofiaamaya-https.conf 31-error.conf &&
+      a2ensite 00-default.conf 10-www.sofiamaya.com.conf 20-host1.sofiamaya.com.conf 21-host2.sofiamaya.com.conf 30-sofiamaya-https.conf 31-error.conf &&
       apache2ctl -D FOREGROUND
       "
