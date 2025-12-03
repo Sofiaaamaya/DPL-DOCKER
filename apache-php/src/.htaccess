@@ -1,20 +1,17 @@
-# Archivo: apache-php/src/.htaccess
+# Archivo: apache-php/src/.htaccess (VERSIÓN DEFINITIVA)
 
-Options +Indexes +FollowSymLinks
+# Desactiva el listado de archivos (para eliminar el Index of /)
+Options -Indexes +FollowSymLinks
 
-# Indicar el código de idioma para la negociación
-# IMPORTANTE: Solo código de idioma, sin punto ni extensión.
+# Indicar explícitamente que estos sufijos son archivos PHP
+AddType application/x-httpd-php .php .es .en .fr .de 
+
+# CÓDIGOS DE IDIOMA
 AddLanguage es es
 AddLanguage en en
 AddLanguage fr fr
 AddLanguage de de
 
-# Esto hace que el navegador busque un archivo que empiece por 'index'
 DirectoryIndex index
-
-# Activar la negociación de contenido (MultiViews)
-# Esto es lo que busca la mejor versión del archivo (index.es.php, index.en.php, etc.)
 Options +MultiViews
-
-# Definir el idioma por defecto si no se encuentra ninguno de los anteriores
 DefaultLanguage en
