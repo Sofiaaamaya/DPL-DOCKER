@@ -1,41 +1,30 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  apache:
-    build: ./apache-php
-    container_name: apache-auth
+  # Servicio Web/PHP
+  apache-php:
+    build:
+      context: ./apache-php
+      dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
+      # Monta la carpeta 'src' para que los cambios se reflejen sin reconstruir
       - ./apache-php/src:/var/www/html
     depends_on:
       - mysql
-      
-  mysql:
-    image: mysql:8
-    container_name: mysql-auth
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: authdb
-      MYSQL_USER: authuser
-      MYSQL_PASSWORD: authpass
-    ports:
-      - "3307:3306"
-    volumes:
-      - ./mysql:/docker-entrypoint-initdb.d
-      - mysql_data:/var/lib/mysql
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: pma-auth
+  # Servicio de Base de Datos MySQL
+  mysql:
+    image: mysql:8.0
     environment:
-      PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root
-    ports:
-      - "8081:80"
-    depends_on:
-      - mysql # Añadido para asegurar que MySQL esté listo antes de iniciar phpMyAdmin
-      
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - dbdata:/var/lib/mysql # Persistencia de datos
+
 volumes:
-  mysql_data:
+  dbdata:

@@ -1,10 +1,20 @@
+# Archivo: apache-php/src/.htaccess
+
 Options +Indexes +FollowSymLinks
-AddLanguage es .es
-AddLanguage en .en
-AddLanguage fr .fr
-AddLanguage de .de
+
+# Indicar el código de idioma para la negociación
+# IMPORTANTE: Solo código de idioma, sin punto ni extensión.
+AddLanguage es es
+AddLanguage en en
+AddLanguage fr fr
+AddLanguage de de
+
+# Esto hace que el navegador busque un archivo que empiece por 'index'
 DirectoryIndex index
-# Activar negociación de contenido
+
+# Activar la negociación de contenido (MultiViews)
+# Esto es lo que busca la mejor versión del archivo (index.es.php, index.en.php, etc.)
 Options +MultiViews
-# Idioma por defecto
+
+# Definir el idioma por defecto si no se encuentra ninguno de los anteriores
 DefaultLanguage en
